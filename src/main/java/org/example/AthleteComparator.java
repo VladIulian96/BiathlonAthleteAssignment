@@ -11,7 +11,7 @@ public class AthleteComparator implements Comparator {
         o1 = (Athlete) o1;
         o2 = (Athlete) o2;
 
-        if(athleteManager.timeConvertor(((Athlete) o1).skiTimeResult + ((Athlete) o1).totalShootingResult) > athleteManager.timeConvertor(((Athlete) o2).skiTimeResult) + ((Athlete) o2).totalShootingResult) {
+        if(athleteManager.timeConvertor(((Athlete) o1).getSkiTimeResult() + ((Athlete) o1).getTotalShootingResult()) > athleteManager.timeConvertor(((Athlete) o2).getSkiTimeResult()) + ((Athlete) o2).getTotalShootingResult()) {
             return -1;
         }
 

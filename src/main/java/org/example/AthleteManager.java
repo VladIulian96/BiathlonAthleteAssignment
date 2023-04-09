@@ -8,7 +8,7 @@ import java.util.List;
 
 public class AthleteManager {
 
-    private final String path = "C:\\Users\\ramez\\OneDrive\\Desktop\\Java Development\\Proiecte\\BiathlonAthleteAssignment\\src\\main\\java\\org\\example\\Athletes.csv";
+    private final String path = "src/main/java/org/example/Athletes.csv";
     public List<Athlete> athleteList = new ArrayList<>();
 
     public void runApplication() throws IOException, InputException {
@@ -59,28 +59,28 @@ public class AthleteManager {
         if(athlete == null)
             throw new RuntimeException("Couldn't calculate the final standing!");
 
-        char[] firstShootingResultCharArray = athlete.firstShootingResult.toCharArray();
+        char[] firstShootingResultCharArray = athlete.getFirstShootingResult().toCharArray();
         for(char symbol : firstShootingResultCharArray) {
             if(symbol == 'o') {
-                athlete.totalShootingResult += 10;
+                athlete.setTotalShootingResult(athlete.getTotalShootingResult() + 10);
             }
         }
 
-        char[] secondShootingResultCharArray = athlete.secondShootingResult.toCharArray();
+        char[] secondShootingResultCharArray = athlete.getSecondShootingResult().toCharArray();
         for(char symbol : secondShootingResultCharArray) {
             if(symbol == 'o') {
-                athlete.totalShootingResult += 10;
+                athlete.setTotalShootingResult(athlete.getTotalShootingResult() + 10);
             }
         }
 
-        char[] thirdShootingResultCharArray = athlete.thirdShootingResult.toCharArray();
+        char[] thirdShootingResultCharArray = athlete.getThirdShootingResult().toCharArray();
         for(char symbol : thirdShootingResultCharArray) {
             if(symbol == 'o') {
-                athlete.totalShootingResult += 10;
+                athlete.setTotalShootingResult(athlete.getTotalShootingResult() + 10);
             }
         }
 
-        athlete.finalStanding = timeConvertorIntoString(timeConvertor(athlete.skiTimeResult) + athlete.totalShootingResult);
+        athlete.setFinalStanding(timeConvertorIntoString(timeConvertor(athlete.getSkiTimeResult()) + athlete.getTotalShootingResult()));
     }
 
     public void sortAthletes() {
@@ -89,9 +89,9 @@ public class AthleteManager {
 
     public void printAthletes() {
         if(athleteList.size() > 2) {
-            System.out.println("Winner - "      + athleteList.get(0).athleteName + " " + athleteList.get(0).finalStanding + " (" + athleteList.get(0).skiTimeResult + " + " + athleteList.get(0).totalShootingResult + ")");
-            System.out.println("Runner-up - "   + athleteList.get(1).athleteName + " " + athleteList.get(1).finalStanding + " (" + athleteList.get(1).skiTimeResult + " + " + athleteList.get(1).totalShootingResult + ")");
-            System.out.println("Third Place - " + athleteList.get(2).athleteName + " " + athleteList.get(2).finalStanding + " (" + athleteList.get(2).skiTimeResult + " + " + athleteList.get(2).totalShootingResult + ")");
+            System.out.println("Winner - "      + athleteList.get(0).getAthleteName() + " " + athleteList.get(0).getFinalStanding() + " (" + athleteList.get(0).getSkiTimeResult() + " + " + athleteList.get(0).getTotalShootingResult() + ")");
+            System.out.println("Runner-up - "   + athleteList.get(1).getAthleteName() + " " + athleteList.get(1).getFinalStanding() + " (" + athleteList.get(1).getSkiTimeResult() + " + " + athleteList.get(1).getTotalShootingResult() + ")");
+            System.out.println("Third Place - " + athleteList.get(2).getAthleteName() + " " + athleteList.get(2).getFinalStanding() + " (" + athleteList.get(2).getSkiTimeResult() + " + " + athleteList.get(2).getTotalShootingResult() + ")");
         } else {
             throw new RuntimeException("Couldn't print athletes!");
         }
